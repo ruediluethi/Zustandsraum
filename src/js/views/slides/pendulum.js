@@ -8,8 +8,8 @@ var MSimulation = require('../../models/simulation.js');
 
 module.exports = VTrjSlide.extend({
 
-	xTitle: '&Theta;(t): Auslenkung',
-	yTitle: '&Theta;\'(t):',
+	xTitle: '&Theta;(t): Winkelauslenkung',
+	yTitle: '&Theta;\'(t): Winkelgeschw.',
 	xColor: window.BLUE,
 	yColor: window.YELLOW,
 

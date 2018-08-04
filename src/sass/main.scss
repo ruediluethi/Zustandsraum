@@ -155,6 +155,9 @@ h3 {
 h3 span {
     border-bottom: 3px solid #000000;
 }
+a {
+    color: #2268e8;
+}
 
 p, table {
     margin-bottom: 30px;
@@ -168,6 +171,14 @@ p, table {
 
 strong {
     font-weight: 700;
+}
+
+span.high {
+    border: 2px solid #000000;
+    padding: 5px;
+}
+span.high.include2rows {
+    padding: 12px 5px;
 }
 
 span.high-yellow, span.oscillate {
@@ -308,6 +319,8 @@ sup.double {
 .formula span.sqrt::before {
     content: '\221A';
     margin-left: -14px;
+    font-size: 33px;
+    font-weight: 200;
 }  
 
 .formula span.sqrt {
@@ -319,8 +332,24 @@ sup.double {
     margin-left: 15px;
 }
 
+.formula .small span.sqrt {
+    margin-left: 8px;
+    border-top: 1px solid #000000;
+}
+
+.formula .small span.sqrt::before {
+    font-size: 21px;
+    font-weight: 200;
+    margin-left: -8px;
+}
+
+.formula .small span.sqrt.include2rows {
+    margin-left: 15px;
+    border-top: 2px solid #000000;
+}
+
 .formula .small span.sqrt.include2rows::before {
-    font-size: 30px;
+    font-size: 36px;
     font-weight: 200;
     margin-left: -15px;
 }

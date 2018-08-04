@@ -34,6 +34,20 @@ module.exports = VTrjSlide.extend({
 		self.simulation.set('dy', function(x,y,params){
 			return params[2].value*x*y - params[3].value*y;
 		});
+		self.simulation.set('lambda', function(x,y,params){
+			// lambda^2 + lambda(-a+by-cx+d) + acx-ad+bdy
+			a = 1;
+			b = -params[0].value + params[1].value*y - params[2].value*x + params[3].value;
+			c = params[0].value*params[2].value*x - params[0].value*params[3].value + params[1].value*params[3].value*y;
+
+			return window.mitternacht(a,b,c);
+		});
+		self.simulation.set('stablePoints', [
+			function(params){ return [0,0] },
+			function(params){
+				return [params[0].value/params[1].value*(1-params[3].value/(params[4].value*params[2].value)), params[3].value/params[2].value];
+			}
+		]);
 	}
 
 });
