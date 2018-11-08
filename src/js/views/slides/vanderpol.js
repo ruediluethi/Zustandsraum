@@ -33,23 +33,16 @@ module.exports = VTrjSlide.extend({
 			return params[0].value*(1-x*x)*y - x;
 		});
 		self.simulation.set('lambda', function(x,y,params){
-			// P = lambda^2 - lambda*a*(1-x^2) + 2axy + 1 = 0
+			// P = -lambda a + lambda a x1^2 + lambda^2 + 2a x1 x2 + 1
+			// 0 = lambda^2 + lambda * a(x1^2 - 1) + 2a x1 x2 + 1
 			var a = 1;
-			var b = params[0].value*(1-x*x);
+			var b = params[0].value*(x*x - 1);
 			var c = 2*params[0].value*x*y + 1;
 
 			return window.mitternacht(a,b,c);
 		});
 		self.simulation.set('stablePoints', [
-			function(params, point){ return [point[0],point[1]]; },
-			function(params, point){ return [point[0],point[1]]; },
-			function(params, point){ return [point[0],point[1]]; },
-			function(params, point){ return [point[0],point[1]]; },
-			function(params, point){ return [point[0],point[1]]; },
-			function(params, point){ return [point[0],point[1]]; },
-			function(params, point){ return [point[0],point[1]]; },
-			function(params, point){ return [point[0],point[1]]; },
-			function(params, point){ return [point[0],point[1]]; },
+			function(params){ return [0,0]; }
 		]);
 	}
 

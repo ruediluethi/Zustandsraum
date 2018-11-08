@@ -80,7 +80,7 @@ $(document).ready(function(){
             window.isMedium = true;
             $('body').addClass('medium');
         }
-        if ($(window).width() < 600){
+        if ($(window).width() < 800){
             window.isMobile = true;
             $('body').addClass('mobile');
         }

@@ -17,6 +17,7 @@ var VSlidePredatorPreyCapacity = require('./views/slides/predatorpreycapacity');
 var VSlideDuffing = require('./views/slides/duffing');
 var VSlideVanDerPol = require('./views/slides/vanderpol');
 var VSlideChaos = require('./views/slides/chaos');
+var VSlideGulf = require('./views/slides/gulf');
 
 var colorGulf = '#ed4f80';
 var colorNorthSea = '#40a1dd';
@@ -44,7 +45,8 @@ module.exports = Backbone.View.extend({
 		'raeuberbeutekapazitaet',
 		'duffing',
 		'vanderpol',
-		'chaos'
+		'chaos',
+		'gulf'
 	],
 
 	slideViews: {
@@ -56,6 +58,7 @@ module.exports = Backbone.View.extend({
 		'duffing': new VSlideDuffing(),
 		'vanderpol': new VSlideVanDerPol(),
 		'chaos': new VSlideChaos(),
+		'gulf': new VSlideGulf(),
 	},
 
 	vCrntSlide: undef,
@@ -86,6 +89,18 @@ module.exports = Backbone.View.extend({
 	initRouter: function(){
 		var self = this;
 
+		/*
+		// this part is for the standalone app
+		self.router = {
+			navigate: function(url){
+				var splittedUrl = url.split('/');
+				self.showSlide(splittedUrl[splittedUrl.length-1]);
+			}
+		};
+		self.showRoot();
+		return;
+		*/
+
 		// init the router and push states
 	    self.router = new Router({
 	    	app: self
@@ -113,17 +128,18 @@ module.exports = Backbone.View.extend({
 	showSlide: function(slide){
 		var self = this;
 
-		self.showLoading();
-
 		if (self.vCrntSlide == undef){ // if there is no current slide, do inital app rendering
 			self.render();
-		}else{
-			self.vCrntSlide.destruct();
-			self.vCrntSlide.remove();
 		}
 
+		self.showLoading();
+
+		var crntSlideNr = -1;
 		var slideNr = -1;
 		for (var i = 0; i < self.slidesStack.length; i++){
+			if (self.vCrntSlide != undef && self.vCrntSlide.slideName == self.slidesStack[i]){
+				crntSlideNr = i+1;
+			}
 			if (slide == self.slidesStack[i]){
 				if (i > 0){
 					self.$el.find('#navigation .go-back').show();
@@ -142,20 +158,34 @@ module.exports = Backbone.View.extend({
 					self.$el.find('#navigation .go-forward').hide();
 				}
 				slideNr = i+1;
-				break;
 			}
 		}
 
-		console.log('SHOW SLIDE ('+slideNr+'/'+self.slidesStack.length+'): '+slide);
+		var direction = (slideNr > crntSlideNr) * 2 - 1;
 
-		self.$el.addClass('full-screen');
+		if (self.vCrntSlide != undef){
+			var oldSlide = self.vCrntSlide;
+			self.vCrntSlide.slideOut(-direction, function(){
+				oldSlide.destruct();
+				oldSlide.remove();
+			});
+		}
+
+		console.log('SHOW SLIDE ('+crntSlideNr+' -> '+slideNr+'/'+self.slidesStack.length+'): '+slide);
+
 		var newVSlide = self.slideViews[slide];
+		newVSlide.slideName = slide;
 		self.$el.find('#slides-container').append(newVSlide.$el);
-		newVSlide.render()
+		newVSlide.prerender();
+		newVSlide.render();
+		newVSlide.resize();
+
+		self.hideLoading();
 
 		self.vCrntSlide = newVSlide; // the new slide is now the current
-		self.vCrntSlide.resize();
-		self.hideLoading();
+		self.vCrntSlide.slideIn(direction, function(){
+			self.vCrntSlide.postrender();
+		});
 	},
 
 	initResize: function(){
@@ -188,10 +218,12 @@ module.exports = Backbone.View.extend({
 	},
 
 
-	
 
 	goForward: function(e){
 		var self = this;
+		if ($('body').hasClass('animate-in') || $('body').hasClass('animate-out')){
+			return;
+		}
 
 		if (e != undef){
 			if(e.preventDefault){
@@ -208,6 +240,9 @@ module.exports = Backbone.View.extend({
 
 	goBack: function(e){
 		var self = this;
+		if ($('body').hasClass('animate-in') || $('body').hasClass('animate-out')){
+			return;
+		}
 
 		if (e != undef){
 			if(e.preventDefault){
@@ -224,6 +259,9 @@ module.exports = Backbone.View.extend({
 
 	linkClick: function(e){
 		var self = this;
+		if ($('body').hasClass('animate-in') || $('body').hasClass('animate-out')){
+			return;
+		}
 
         var $a = $(e.currentTarget);
 

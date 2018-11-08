@@ -36,6 +36,8 @@ module.exports = Backbone.View.extend({
 	yMin: 0,
 	yMax: 3,
 
+	squareSize: 14,
+
 	initialize: function(options) {
 		var self = this;
 
@@ -173,6 +175,8 @@ module.exports = Backbone.View.extend({
 
 		var lineLengthX = Math.floor(self.diagramWidth/fieldResolution);
 		var lineLengthY = Math.floor(self.diagramHeight/fieldResolution);
+
+		self.addGradient(lineLengthX, fieldResolution);
 
 		var fieldData = [];
 		for (var x = 0; x < fieldResolution; x++){
@@ -394,16 +398,20 @@ module.exports = Backbone.View.extend({
 		self.$el.find('.plot-wrapper').append($legend);
 	},
 
-	addGradient: function(text){
+	addGradient: function(iconSize, gradientLength){
 		var self = this;
 
-		var $legend = $('<div class="plot-legend" style="margin-left: 0px;"><svg></svg>'+text+'<div>');
+		if (self.$el.find('.plot-wrapper .plot-legend').length > 0){
+			return;
+		}
 
-		var iconSize = 14;
-		var gradientLength = 12;
+		var $legend = $('<div class="plot-legend" style="margin-left: 0px;"><svg></svg><div>');
+
+		// var iconSize = self.squareSize;
+		// var gradientLength = 12;
 
 		var svgIcon = d3.select($legend.find('svg')[0]);
-		svgIcon.attr('width', iconSize*gradientLength);
+		svgIcon.attr('width', self.paddingLeft + iconSize*gradientLength);
 		svgIcon.attr('height', 20);
 
 		var gRects = svgIcon.append('g');
@@ -416,7 +424,7 @@ module.exports = Backbone.View.extend({
 
 			var alpha = i/(gradientLength-1);
 			gRects.append('rect')
-				.attr('x', x)
+				.attr('x', self.paddingLeft + x)
 				.attr('y', y)
 				.attr('width', iconSize)
 				.attr('height', iconSize)
@@ -428,9 +436,9 @@ module.exports = Backbone.View.extend({
 			var l = Math.sqrt(dx*dx + dy*dy);
 
 			gLines.append('line')
-				.attr('x1', x+iconSize/2)
+				.attr('x1', self.paddingLeft + x+iconSize/2)
 				.attr('y1', y+iconSize/2)
-				.attr('x2', x+iconSize/2+dx/l*iconSize*0.5)
+				.attr('x2', self.paddingLeft + x+iconSize/2+dx/l*iconSize*0.5)
 				.attr('y2', y+iconSize/2+dy/l*iconSize*0.5)
 				.attr('stroke', '#FFFFFF')
 				.attr('stroke-width', 1);

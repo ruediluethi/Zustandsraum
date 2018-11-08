@@ -29,10 +29,14 @@ module.exports = VSlide.extend({
 		self.simulation = new MSimulation();
 	},
 
+	prerender: function(){
+		var self = this;
+		window.app.$el.removeClass('full-screen');
+	},
+
 	postrender: function(){
 		var self = this;
 
-		window.app.$el.removeClass('full-screen');
 		self.renderParams();
 		self.renderPlots();
 
@@ -162,7 +166,6 @@ module.exports = VSlide.extend({
 		self.$el.find('.trajectories').append(vTrjPlot.$el);
 		vTrjPlot.render();
 		vTrjPlot.renderAxis(self.simulation.fieldResolution);
-		vTrjPlot.addGradient('');
 	},
 
 	destruct: function(){

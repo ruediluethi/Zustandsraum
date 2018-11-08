@@ -1,163 +1,144 @@
 <h2><span>Räuber/Beute</span></h2>
 
-<table class="formula">
-<tbody>
-	<tr>
-		<td style="text-align: left;">
-			<table class="formula">
-			<tbody>
-				<tr>
-					<td style="text-align: left;">
-						<span class="textrm">Beute:</span>
-					</td>
-					<td>
-						<span class="high include2rows">
-						<span class="fraction"><span class="enumerator">dx</span><span class="numerator">dt</span></span>
-			= ax &minus; bxy
-						</span>
-					</td>
-				</tr>
-				<tr>
-					<td style="text-align: left;">
-						<span class="textrm">Räuber:</span>
-					</td>
-					<td>
-						<span class="high include2rows">
-						<span class="fraction"><span class="enumerator">dy</span><span class="numerator">dt</span></span>
-			= cxy &minus; dy
-						</span>
-					</td>
-				</tr>
-			</tbody>
-			</table>
-		</td>
-		<td>
+<div class="col col-100 floating-formula">
+	
+	
+	<p class="formula" style="margin-top: 20px; margin-right: 10px;">
+		<span class="textrm">Diff. Gleichungen: </span>
+	</p>
 
-		</td>
-		<td>
-			= &nabla; f(x,y)
-		</td>
-		<td>=<span class="stackrel">!</span> 0</td>
-		<td>&#8658;</td>
-		<td style="text-align: left;">
-			ax &minus; bxy =<span class="stackrel">!</span> 0 &#8658;
-			y = <span class="fraction"><span class="enumerator">a</span><span class="numerator">b</span></span> <br>
-			cx<span class="fraction"><span class="enumerator">a</span><span class="numerator">b</span></span> &minus;
-			d<span class="fraction"><span class="enumerator">a</span><span class="numerator">b</span></span>
-			=<span class="stackrel">!</span> 0 &#8658;
-			x = <span class="fraction"><span class="enumerator">d</span><span class="numerator">c</span></span>
-		</td>
-		<td>&#8658;</td>
-		<td>
-			<table class="formula" style="margin-bottom: 0px;">
-			<tbody>
-				<tr>
-					<td rowspan="2">Jf(x,y) = <span class="over2rows">(</span></td>
-					<td style="margin-right: 10px;">
-						a&minus;by
-					</td>
-					<td>
-						&minus;bx
-					</td>
-					<td rowspan="2"><span class="over2rows">)</span></td>
-				</tr>
-				<tr>
-					<td style="margin-right: 10px;">
-						cy
-					</td>
-					<td>
-						cx&minus;d
-					</td>
-				</tr>
-			</tbody>
-			</table>
-		</td>
-	</tr>
-</tbody>
-</table>
+	<p class="formula">
+		<span class="textrm">Beute:</span>
+		<span class="high" style="margin-bottom: 5px;">
+			<span class="fraction"><span class="enumerator">dx</span><span class="numerator">dt</span></span>
+= ax &minus; bxy
+		</span>
+		<br>
+		<span class="textrm">Räuber:</span>
+		<span class="high">
+			<span class="fraction"><span class="enumerator">dy</span><span class="numerator">dt</span></span>
+= cxy &minus; dy
+		</span>
+	</p>
+
+	<p class="formula lnbr" style="margin-top: 14px;">
+		<span class="textrm">Gradient: </span>
+		&nabla; f(x,y) =<span class="stackrel">!</span> 0
+		<span class="rightarrow"></span>
+	</p>
+	<p class="formula">
+		<span class="fraction"><span class="enumerator">dx</span><span class="numerator">dt</span></span> = 
+		ax &minus; bxy =<span class="stackrel">!</span> 0 &#8658;
+		y = <span class="fraction"><span class="enumerator">a</span><span class="numerator">b</span></span> <br>
+		<span class="fraction"><span class="enumerator">dy</span><span class="numerator">dt</span></span> = 
+		cx<span class="fraction"><span class="enumerator">a</span><span class="numerator">b</span></span> &minus;
+		d<span class="fraction"><span class="enumerator">a</span><span class="numerator">b</span></span>
+		=<span class="stackrel">!</span> 0 &#8658;
+		x = <span class="fraction"><span class="enumerator">d</span><span class="numerator">c</span></span>
+	</p>
+	<p class="formula" style="margin-top: 14px;">
+		<span class="rightarrow"></span>
+		<span class="textrm">Gleichgewichtspunkt</span>
+	</p>
+
+	<table class="formula lnbr">
+		<tbody>
+			<tr>
+				<td rowspan="2">
+					<span class="textrm">Jacobi-Matrix:</span>
+					J<sub>f</sub>(x,y) = <span class="over2rows">(</span>
+				</td>
+				<td style="margin-right: 10px;">
+					a&minus;by
+				</td>
+				<td>
+					&minus;bx
+				</td>
+				<td rowspan="2"><span class="over2rows">)</span></td>
+			</tr>
+			<tr>
+				<td style="margin-right: 10px;">
+					cy
+				</td>
+				<td>
+					cx&minus;d
+				</td>
+			</tr>
+		</tbody>
+	</table>
+
+	<table class="formula" style="margin-bottom: 0px;">
+	<tbody>
+		<tr>
+			<td rowspan="2">
+				<span class="rightarrow"></span>
+				J<sub>f</sub>(
+				<span class="fraction"><span class="enumerator">d</span><span class="numerator">c</span></span>,
+				<span class="fraction"><span class="enumerator">a</span><span class="numerator">b</span></span>
+			) = </td>
+			<td rowspan="2"><span class="over2rows">(</span></td>
+			<td>
+				a&minus;b
+				<span class="fraction"><span class="enumerator">a</span><span class="numerator">b</span></span>
+			</td>
+			<td>
+				&minus;b
+				<span class="fraction"><span class="enumerator">d</span><span class="numerator">c</span></span>
+			</td>
+			<td rowspan="2"><span class="over2rows">)</span></td>
+			<td rowspan="2">=</td>
+			<td rowspan="2"><span class="over2rows">(</span></td>
+			<td>
+				0
+			</td>
+			<td>
+				&minus;<span class="fraction"><span class="enumerator">bd</span><span class="numerator">c</span></span>
+			</td>
+			<td rowspan="2"><span class="over2rows">)</span></td>
+		</tr>
+		<tr>
+			<td>
+				c<span class="fraction"><span class="enumerator">a</span><span class="numerator">b</span></span>
+			</td>
+			<td>
+				c<span class="fraction"><span class="enumerator">d</span><span class="numerator">c</span></span> &minus; d
+			</td>
+			<td>
+				<span class="fraction"><span class="enumerator">ca</span><span class="numerator">b</span></span>
+			</td>
+			<td>0</td>
+		</tr>
+	</tbody>
+	</table>
+
+	<p class="formula lnbr">
+		<span class="textrm">Char. Polynom: </span>
+		P<sub>J<sub>f</sub></sub>(&lambda;) =
+		(&minus;&lambda;)(&minus;&lambda;) &minus;
+		<span class="fraction"><span class="enumerator">ca</span><span class="numerator">b</span></span>
+		<span class="over2rows">(</span>
+			&minus;<span class="fraction"><span class="enumerator">bd</span><span class="numerator">c</span></span>
+		<span class="over2rows">)</span> = 
+		&lambda;<sup>2</sup> + cd 
+		=<span class="stackrel">!</span> 0
+	</p>
+
+	
+	<table class="formula lnbr">
+		<tbody>
+			<tr>
+				<td rowspan="2"><span class="textrm">Eigenwerte:</span></td>
+				<td>&lambda;<sub>1</sub> = 0 + i<span class="sqrt">cd</span></td>
+			</tr>
+			<tr>
+				<td>&lambda;<sub>2</sub> = 0 &minus; i<span class="sqrt">cd</span></td>
+			</tr>
+		</tbody>
+	</table>
+
+</div>
 
 <div>
-	<div class="col col-33 formula">
-		<table class="formula" style="margin-bottom: 0px;">
-		<tbody>
-			<tr>
-				<td rowspan="2">Jf(
-					<span class="small">
-						<span class="fraction"><span class="enumerator">d</span><span class="numerator">c</span></span>,
-						<span class="fraction"><span class="enumerator">a</span><span class="numerator">b</span></span>
-					</span>
-				) = </td>
-				<td rowspan="2"><span class="over2rows">(</span></td>
-				<td>
-					<span class="small">
-						a&minus;b
-						<span class="fraction"><span class="enumerator">a</span><span class="numerator">b</span></span>
-					</span>
-				</td>
-				<td>
-					<span class="small">
-						&minus;b
-						<span class="fraction"><span class="enumerator">d</span><span class="numerator">c</span></span>
-					</span>
-				</td>
-				<td rowspan="2"><span class="over2rows">)</span></td>
-			</tr>
-			<tr>
-				<td>
-					<span class="small">
-						c
-						<span class="fraction"><span class="enumerator">a</span><span class="numerator">b</span></span>
-					</span>
-				</td>
-				<td>
-					<span class="small">
-						c<span class="fraction"><span class="enumerator">d</span><span class="numerator">c</span></span> &minus; d</span>
-				</td>
-			</tr>
-		</tbody>
-		</table>
-		<table class="formula" style="margin-bottom: 0px;">
-		<tbody>
-			<tr>
-				<td rowspan="2">=</td>
-				<td rowspan="2"><span class="over2rows">(</span></td>
-				<td>
-					<span class="small">
-						0
-					</span>
-				</td>
-				<td>
-					<span class="small">
-						&minus;<span class="fraction"><span class="enumerator">bd</span><span class="numerator">c</span></span>
-					</span>
-				</td>
-				<td rowspan="2"><span class="over2rows">)</span></td>
-			</tr>
-			<tr>
-				<td>
-					<span class="small">
-						<span class="fraction"><span class="enumerator">ca</span><span class="numerator">b</span></span>
-					</span>
-				</td>
-				<td><span class="small">0</span></td>
-			</tr>
-		</tbody>
-		</table>
-		<p class="formula">
-			P<sub>Jf</sub>(&lambda;) = <br>
-			(&minus;&lambda;)(&minus;&lambda;) &minus;
-			<span class="fraction"><span class="enumerator">ca</span><span class="numerator">b</span></span>
-			<span class="over2rows">(</span>
-				&minus;<span class="fraction"><span class="enumerator">bd</span><span class="numerator">c</span></span>
-			<span class="over2rows">)</span> = <br>
-			&lambda;<sup>2</sup> + cd 
-			=<span class="stackrel">!</span> 0
-		</p>
-		<p class="formula">
-			&lambda;<sub>1</sub> = 0 + i<span class="sqrt">cd</span><br>
-			&lambda;<sub>2</sub> = 0 &minus; i<span class="sqrt">cd</span>
-		</p>
-	</div>
-	<div class="col col-33 simulation"></div>
-	<div class="col col-33 trajectories"></div>
+	<div class="col col-50 simulation"></div>
+	<div class="col col-50 trajectories"></div>
 </div>

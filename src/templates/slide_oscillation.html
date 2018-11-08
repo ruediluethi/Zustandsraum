@@ -1,84 +1,95 @@
 <h2><span>Masse-Feder-Dämpfung</span></h2>
 
-<div class="col col-100">
+<div class="col col-100 floating-formula">
+
+	<p class="formula" style="margin-top: 30px;">
+		<span class="textrm">Diff. Gleichung: </span>
+		<span class="high">mx&#776; + dx&#775; + cx = 0</span>
+	</p>
 	<table class="formula">
-	<tbody>
-		<tr>
-			<td>
-				<span class="high">mx&#776; + dx&#775; + cx = 0</span>
-			</td>
-			<td>&#8658;</td>
-			<td>
-				x<sub>1</sub> = x <br>
-				x<sub>2</sub> = x&#775;
-			</td>
-			<td>&#8658;</td>
-			<td style="text-align: left;">
-				x&#775;<sub>1</sub> = x<sub>2</sub> <br>
-				x&#775;<sub>2</sub> = <span class="fraction"><span class="enumerator">&nbsp;1&nbsp;</span><span class="numerator">m</span></span>( &minus;dx<sub>2</sub> &minus; cx<sub>1</sub> )
-			</td>
-			<td>
-				= &nabla; f
-			</td>
-			<td>&#8658;</td>
-			<td>
-				<table style="margin-bottom: 0px;">
-				<tbody>
-					<tr>
-						<td rowspan="2">Jf = <span class="over2rows">(</span></td>
-						<td class="push-right">
-							0
-						</td>
-						<td>
-							1
-						</td>
-						<td rowspan="2"><span class="over2rows">)</span></td>
-					</tr>
-					<tr>
-						<td class="push-right">
-							<span class="fraction"><span class="enumerator">&minus;c</span><span class="numerator">m</span></span>
-						</td>
-						<td>
-							<span class="fraction"><span class="enumerator">&minus;d</span><span class="numerator">m</span></span>
-						</td>
-					</tr>
-				</tbody>
-				</table>
-			</td>
-		</tr>
-	</tbody>
+		<tbody>
+			<tr>
+				<td><span class="rightarrow"></span></td>
+				<td>
+					x<sub>1</sub> = x <br>
+					x<sub>2</sub> = x&#775;
+				</td>
+				<td><span class="rightarrow"></span></td>
+				<td style="text-align: left;">
+					x&#775;<sub>1</sub> = x<sub>2</sub> <br>
+					x&#775;<sub>2</sub> = <span class="fraction"><span class="enumerator">&nbsp;1&nbsp;</span><span class="numerator">m</span></span>( &minus;dx<sub>2</sub> &minus; cx<sub>1</sub> )
+				</td>
+			</tr>
+		</tbody>
 	</table>
+	<table class="formula lnbr">
+		<tbody>
+			<tr>
+				<td>
+					<table style="margin-bottom: 0px;">
+					<tbody>
+						<tr>
+							<td rowspan="2">
+								<span class="textrm">Jacobi-Matrix: </span>
+								J<sub>f</sub> = <span class="over3rows">(</span>
+							</td>
+							<td class="push-right">
+								0
+							</td>
+							<td>
+								1
+							</td>
+							<td rowspan="2"><span class="over3rows">)</span></td>
+						</tr>
+						<tr>
+							<td class="push-right">
+								<span class="fraction"><span class="enumerator">&minus;c</span><span class="numerator">m</span></span>
+							</td>
+							<td>
+								<span class="fraction"><span class="enumerator">&minus;d</span><span class="numerator">m</span></span>
+							</td>
+						</tr>
+					</tbody>
+					</table>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	<br>
+	<p class="formula lnbr">
+		<span class="textrm">Char. Polynom: </span>
+		P<sub>J<sub>f</sub></sub>(&lambda;) = 
+		(&minus;&lambda;)
+		<span class="over2rows">(</span>
+			<span class="fraction"><span class="enumerator">&minus;d</span><span class="numerator">m</span></span>
+			&minus; &lambda;
+		<span class="over2rows">)</span>
+		+ <span class="fraction"><span class="enumerator">&nbsp;c&nbsp;</span><span class="numerator">m</span></span> =
+		&lambda;<sup>2</sup> + <span class="fraction"><span class="enumerator">&lambda;d</span><span class="numerator">m</span></span> + <span class="fraction"><span class="enumerator">&nbsp;c&nbsp;</span><span class="numerator">m</span></span>
+		=<span class="stackrel">!</span> 0
+	</p>
+	<br>
+	<p class="formula">
+		<span class="textrm">Eigenwerte:</span>
+		<span class="rightarrow"></span>
+		&lambda;<sub>1,2</sub> = 
+		<span class="small">
+			<span class="fraction include2rows"><span class="enumerator" style="top: -1.2em;">
+				&minus;<span class="fraction"><span class="enumerator">&nbsp;d</span><span class="numerator">m</span></span>
+				+/&minus;
+				<span class="sqrt include2rows">
+					<span class="over2rows">(</span>
+						<span class="fraction"><span class="enumerator">&nbsp;d</span><span class="numerator">m</span></span>
+					<span class="over2rows">)</span><sup class="double">2</sup>
+					&minus; <span class="fraction"><span class="enumerator">4c</span><span class="numerator">m</span></span>		
+				</span>
+			</span><span class="numerator">2</span></span>
+		</span>
+	</p>
 </div>
 
+
 <div>
-	<div class="col col-33 formula">
-		<p class="formula pull-back">
-			P<sub>Jf</sub>(&lambda;) = <br>
-			(&minus;&lambda;)
-			<span class="over2rows">(</span>
-				<span class="fraction"><span class="enumerator">&minus;d</span><span class="numerator">m</span></span>
-				&minus; &lambda;
-			<span class="over2rows">)</span>
-			+ <span class="fraction"><span class="enumerator">&nbsp;c&nbsp;</span><span class="numerator">m</span></span> = <br>
-			&lambda;<sup>2</sup> + <span class="fraction"><span class="enumerator">&lambda;d</span><span class="numerator">m</span></span> + <span class="fraction"><span class="enumerator">&nbsp;c&nbsp;</span><span class="numerator">m</span></span>
-			=<span class="stackrel">!</span> 0
-		</p>
-		<p class="formula">
-			&lambda;<sub>1,2</sub> = 
-			<span class="small">
-				<span class="fraction include2rows"><span class="enumerator" style="top: -1.2em;">
-					&minus;<span class="fraction"><span class="enumerator">&nbsp;d</span><span class="numerator">m</span></span>
-					+/&minus;
-					<span class="sqrt include2rows">
-						<span class="over2rows">(</span>
-							<span class="fraction"><span class="enumerator">&nbsp;d</span><span class="numerator">m</span></span>
-						<span class="over2rows">)</span><sup class="double">2</sup>
-						&minus; <span class="fraction"><span class="enumerator">4c</span><span class="numerator">m</span></span>		
-					</span>
-				</span><span class="numerator">2</span></span>
-			</span>
-		</p>
-	</div>
-	<div class="col col-33 simulation"></div>
-	<div class="col col-33 trajectories"></div>
+	<div class="col col-50 simulation"></div>
+	<div class="col col-50 trajectories"></div>
 </div>
